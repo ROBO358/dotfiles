@@ -8,3 +8,7 @@
 [user]
 	name = ROBO358
 	email = 18186312+ROBO358@users.noreply.github.com
+{{ if (.chezmoi.kernel.osrelease | lower | contains "microsoft") }}
+[credential]
+  helper = /mnt/c/Program\\ Files/Git/mingw64/bin/git-credential-manager.exe
+{{ end }}
