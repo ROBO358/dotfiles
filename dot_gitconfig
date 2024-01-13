@@ -1,0 +1,10 @@
+[init]
+	defaultBranch = main
+[color]
+	ui = auto
+[core]
+	editor = /usr/bin/nvim
+	quotepath = false
+[user]
+	name = ROBO358
+	email = 18186312+ROBO358@users.noreply.github.com
