@@ -1,0 +1,8 @@
+packages:
+  apt:
+    - 'vim'
+    - 'neovim'
+    - 'git'
+    - 'zsh'
+    - 'curl'
+    - 'htop'
