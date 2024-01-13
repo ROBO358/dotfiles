@@ -1,5 +1,8 @@
 #!/bin/sh
 {{ if eq .chezmoi.osRelease.idLike "debian" -}}
+sudo apt update
+sudo apt autoremove -y
+sudo apt autoclean -y
 {{ range .packages.apt -}}
 sudo apt install -y {{ . | quote }}
 {{ end -}}
