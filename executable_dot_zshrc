@@ -16,11 +16,10 @@ setopt histignorealldups sharehistory
 # Use emacs keybindings even if our EDITOR is set to vi
 # bindkey -e
 
-# 日本語を使用
-export LANGUAGE=en_US.UTF-8
-export LC_ALL=en_US.UTF-8
-export LANG=en_US.UTF-8
-eval $(/usr/bin/locale-check C.UTF-8)
+# ロケール設定
+export LANGUAGE=C.UTF-8
+export LC_ALL=C.UTF-8
+export LANG=C.UTF-8
 
 # zsh-completions の設定。コマンド補完機能
 autoload -Uz compinit && compinit -u

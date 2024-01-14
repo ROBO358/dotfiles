@@ -6,3 +6,12 @@ packages:
     - 'zsh'
     - 'curl'
     - 'htop'
+  dnf:
+    - 'vim'
+    - 'neovim'
+    - 'git'
+    - 'zsh'
+    - 'curl'
+    - 'htop'
+    - 'util-linux-user'
+
