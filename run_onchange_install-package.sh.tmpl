@@ -8,7 +8,7 @@ sudo apt autoclean -y
 {{ range .packages.apt -}}
 sudo apt install -y {{ . | quote }}
 {{ end -}}
-{{ else if eq .chezmoi.osRelease.idLike "rhel centos fedora" -}}
+{{ else if (or (eq .chezmoi.osRelease.idLike "rhel centos fedora") (eq .chezmoi.osRelease.idLike "fedora")) -}}
 sudo dnf autoremove -y
 sudo dnf clean all -y
 {{ if eq .chezmoi.osRelease.id "rocky" -}}
