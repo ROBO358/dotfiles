@@ -6,6 +6,7 @@ packages:
     - 'zsh'
     - 'curl'
     - 'htop'
+    - 'neofetch'
   dnf:
     - 'vim'
     - 'neovim'
@@ -14,4 +15,5 @@ packages:
     - 'curl'
     - 'htop'
     - 'util-linux-user'
+    - 'neofetch'
 
