@@ -3,12 +3,21 @@
 [color]
 	ui = auto
 [core]
-	editor = /usr/bin/nvim
+	editor = {{ output "which" "nvim" | trim }}
 	quotepath = false
 [user]
-	name = ROBO358
-	email = 18186312+ROBO358@users.noreply.github.com
-{{ if (.chezmoi.kernel.osrelease | lower | contains "microsoft") -}}
+	name = {{ .git.name | quote }}
+	email = {{ .git.email | quote }}
+{{- if hasKey .git "gpg_signingkey" }}
+	signingkey = {{ .git.gpg_signingkey }}
+[commit]
+	gpgsign = true
+{{ end -}}
+{{ if and (hasKey .git "gpg_signingkey") (lookPath "gpg") -}}
+[gpg]
+	program = {{ output "which" "gpg" | trim }}
+{{ end -}}
+{{ if (and (eq .chezmoi.os "linux") (.chezmoi.kernel.osrelease | lower | contains "microsoft")) -}}
 [credential]
-  helper = /mnt/c/Program\\ Files/Git/mingw64/bin/git-credential-manager.exe
+	helper = /mnt/c/Program\\ Files/Git/mingw64/bin/git-credential-manager.exe
 {{ end }}

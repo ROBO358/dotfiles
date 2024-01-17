@@ -1,0 +1,11 @@
+{{- $name := promptStringOnce . "name" "What name should I use for Git commits?" "TSURUDO Ryosuke" -}}
+{{- $email := promptStringOnce . "email" "What email address should I use for Git commits?" "18186312+ROBO358@users.noreply.github.com" -}}
+{{- $gpg_signingkey := promptStringOnce . "gpg_signingkey" "Which GPG signature do you use for Git commits?" -}}
+
+data:
+    git:
+        name: {{ $name | quote }}
+        email: {{ $email | quote }}
+        {{ if ne (len $gpg_signingkey) 0 }}
+        gpg_signingkey: {{ $gpg_signingkey | quote }}
+        {{ end }}
