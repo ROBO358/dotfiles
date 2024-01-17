@@ -1,27 +1,36 @@
 #!/bin/sh
 
-export LC_ALL=
-{{ if eq .chezmoi.osRelease.idLike "debian" -}}
-sudo apt update
-sudo apt autoremove -y
-sudo apt autoclean -y
-{{ range .packages.apt -}}
-sudo apt install -y {{ . | quote }}
-{{ end -}}
-{{ else if (or (eq .chezmoi.osRelease.idLike "rhel centos fedora") (eq .chezmoi.osRelease.idLike "fedora")) -}}
-sudo dnf autoremove -y
-sudo dnf clean all -y
-{{ if eq .chezmoi.osRelease.id "rocky" -}}
-sudo dnf install -y 'dnf-command(config-manager)'
-sudo dnf config-manager --set-enabled crb
-sudo dnf install -y epel-release
-{{ else if eq .chezmoi.osRelease.id "rhel" -}}
-sudo subscription-manager repos --enable codeready-builder-for-rhel-9-$(arch)-rpms
-sudo dnf install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm
-{{ end }}
-{{ range .packages.dnf -}}
-sudo dnf install -y {{ . | quote }}
-{{ end -}}
+{{ if eq .chezmoi.os "linux" -}}
+    {{ if eq .chezmoi.osRelease.idLike "debian" -}}
+        sudo apt update
+        sudo apt autoremove -y
+        sudo apt autoclean -y
+        {{ range .packages.apt -}}
+            sudo apt install -y {{ . | quote }}
+        {{ end -}}
+    {{ else if (or (eq .chezmoi.osRelease.idLike "rhel centos fedora") (eq .chezmoi.osRelease.idLike "fedora")) -}}
+        sudo dnf autoremove -y
+        sudo dnf clean all -y
+        {{ if eq .chezmoi.osRelease.id "rocky" -}}
+            sudo dnf install -y 'dnf-command(config-manager)'
+            sudo dnf config-manager --set-enabled crb
+            sudo dnf install -y epel-release
+        {{ else if eq .chezmoi.osRelease.id "rhel" -}}
+            sudo subscription-manager repos --enable codeready-builder-for-rhel-9-$(arch)-rpms
+            sudo dnf install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm
+        {{ end }}
+        {{ range .packages.dnf -}}
+            sudo dnf install -y {{ . | quote }}
+        {{ end -}}
+    {{ end -}}
+{{ else if eq .chezmoi.os "darwin" -}}
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    brew update
+    brew autoremove
+    brew cleanup
+    {{ range .packages.brew -}}
+        brew install {{ . | quote }}
+    {{ end -}}
 {{ end -}}
 
 chsh -s $(which zsh)
@@ -29,4 +38,3 @@ git clone https://github.com/zplug/zplug ~/.zplug
 zsh .zplug/init.zsh
 sudo sh -c "curl -sL install-node.vercel.app/lts | bash -s -- -y"
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-
