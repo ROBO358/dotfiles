@@ -31,8 +31,8 @@ keymap.set("i", "jj", "<Esc>")
 -- 行末までのyank
 keymap.set("n", "Y", "y$")
 
--- fを押すとハイライトを消す
-keymap.set("n", "<leader>f", ":nohlsearch<CR>")
+-- 検索時のハイライトを消す
+keymap.set("n", "<leader>h", ":nohlsearch<CR>")
 
 -- ;と:を入れ替え
 keymap.set("n", ";", ":")
