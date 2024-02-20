@@ -71,7 +71,7 @@ vim.api.nvim_create_autocmd("QuitPre", {
 			if bufname:match("NvimTree_") ~= nil then
 				table.insert(tree_wins, w)
 			end
-			if vim.api.nvim_win_get_config(w).relative ~= '' then
+			if vim.api.nvim_win_get_config(w).relative ~= "" then
 				table.insert(floating_wins, w)
 			end
 		end
@@ -81,5 +81,5 @@ vim.api.nvim_create_autocmd("QuitPre", {
 				vim.api.nvim_win_close(w, true)
 			end
 		end
-	end
+	end,
 })
