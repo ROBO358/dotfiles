@@ -1,0 +1,21 @@
+import = [
+    "~/.config/alacritty/color-nord.toml",
+]
+
+[env]
+TERM = "xterm-256color"
+
+[window]
+decorations = "full"
+padding = { x = 4, y = 4 }
+dynamic_title = true
+
+[window.dimensions]
+columns = 100
+lines = 35
+
+[font]
+size = 14
+
+[font.normal]
+family = "DroidSansM Nerd Font Mono"
