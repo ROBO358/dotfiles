@@ -99,6 +99,9 @@ alias vim=nvim
 
 # PATH
 export PATH=$PATH:/usr/local/go/bin
+{{ if eq .chezmoi.os "linux" -}}
+export PATH="$PATH:/opt/nvim-linux64/bin"
+{{- end }}
 {{- if lookPath "rdctl" }}
 export PATH="{{ output "dirname" ( output "which" "rdctl" ) | trim }}:$PATH"
 {{- end }}

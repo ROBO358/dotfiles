@@ -1,7 +1,6 @@
 packages:
   apt:
     - "vim"
-    - "neovim"
     - "git"
     - "zsh"
     - "curl"
@@ -15,7 +14,6 @@ packages:
     - "make"
   dnf:
     - "vim"
-    - "neovim"
     - "git"
     - "zsh"
     - "curl"

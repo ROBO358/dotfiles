@@ -23,6 +23,9 @@
             sudo dnf install -y {{ . | quote }}
         {{ end -}}
     {{ end -}}
+    curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
+    sudo rm -rf /opt/nvim
+    sudo tar -C /opt -xzf nvim-linux64.tar.gz
 {{ else if eq .chezmoi.os "darwin" -}}
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     brew update
