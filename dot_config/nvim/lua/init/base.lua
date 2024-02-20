@@ -21,7 +21,6 @@ opt.shiftwidth = 2
 opt.expandtab = true
 -- カーソル行からの相対的な行番号を表示する
 opt.relativenumber = true
-opt.termguicolors = true
 -- 行番号を表示
 opt.number = true
 
@@ -80,8 +79,8 @@ opt.hidden = true
 opt.helplang = "ja", "en"
 
 -- ウィンドウの透明度を設定
-opt.winblend = 20
-opt.pumblend = 20
+opt.winblend = 10
+opt.pumblend = 10
 
 -- バックアップファイルを作成しない
 opt.backup = false
