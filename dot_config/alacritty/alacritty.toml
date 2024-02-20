@@ -1,5 +1,5 @@
 import = [
-    "~/.config/alacritty/color-nord.toml",
+  "~/.config/alacritty/color-nord.toml",
 ]
 
 [env]
@@ -11,7 +11,7 @@ padding = { x = 4, y = 4 }
 dynamic_title = true
 
 [window.dimensions]
-columns = 100
+columns = 120
 lines = 35
 
 [font]
