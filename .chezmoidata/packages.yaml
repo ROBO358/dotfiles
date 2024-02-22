@@ -12,6 +12,7 @@ packages:
     - "fd-find"
     - "build-essential"
     - "make"
+    - "git-delta"
   dnf:
     - "vim"
     - "git"
@@ -26,6 +27,7 @@ packages:
     - "fd-find"
     - "gcc"
     - "make"
+    - "git-delta"
   brew:
     - "vim"
     - "neovim"
@@ -42,3 +44,4 @@ packages:
     - "gcc"
     - "make"
     - "alacritty"
+    - "git-delta"
